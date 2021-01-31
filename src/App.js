@@ -1,22 +1,22 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Timers from "./components/Timers";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
-
 const App = () => {
+    // const db = firebase.database();
+    // const name = db.ref("name");
+    // name.on('value', (elem) => console.log(elem.val()))
   return (
       <AuthProvider>
         <Router>
-          <div>
-            <PrivateRoute exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/" component={Timers} />
             <Route exact path="/register" component={Register} />
-          </div>
+            <Route exact path="/login" component={Login} />
         </Router>
       </AuthProvider>
   );

@@ -32,7 +32,7 @@ const Login = ({ history }) => {
             <form onSubmit={handleLogin}>
                 <label>
                     Email
-                    <input name="email" type="email" placeholder="Email" />
+                    <input name="email" type="email" placeholder="Email" /><br/>
                 </label>
                 <label>
                     Password
