@@ -1,29 +1,25 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
-import app from "../base";
+import app from "../../base";
 
 const Register = ({ history }) => {
-    //const db = app.database();
-    //const name = db.ref("name");
-    //name.on('value', (elem) => console.log(elem.val()))
-       const handleRegister = useCallback(async event => {
+
+    // const db = app.database();
+    // const name = db.ref("firstName");
+    // name.on('value', (elem) => console.log(elem.val()))
+
+    const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password, firstName, lastName } = event.target.elements;
         try {
             await app
                 .auth()
                 .createUserWithEmailAndPassword(email.value, password.value);
-                // .then((userCredentials)=>{
-                //     if(userCredentials.user){
-                //         userCredentials.user.updateProfile({
-                //             displayName: displayName.value
-                //         })
-                //     }
-                // });
-            const db = app.database();
-            db.ref("firstName").push(firstName.value);
-            db.ref("lastName").push(lastName.value);
             history.push("/");
+            // const db = app.database();
+            // db.ref("firstName").push(firstName.value);
+            // db.ref("lastName").push(lastName.value);
+            app.database().ref("/persons").push({firstName: firstName.value, lastName: lastName.value});
         } catch (error) {
             alert(error);
         }
@@ -32,7 +28,7 @@ const Register = ({ history }) => {
     return (
         <div>
             <h1>Register</h1>
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleSignUp}>
                 <label>
                     First name
                     <input name="firstName" type="text" placeholder="First name" /><br/>
@@ -49,7 +45,7 @@ const Register = ({ history }) => {
                     Password
                     <input name="password" type="password" placeholder="Password" /><br/>
                 </label>
-                <button type="submit">Register</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );

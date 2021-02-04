@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import app from "../base.js";
-import { AuthContext } from "../Auth.js";
+import app from "../../base.js";
+import { AuthContext } from "../../Auth.js";
 
 const Login = ({ history }) => {
     const handleLogin = useCallback(
@@ -36,7 +36,7 @@ const Login = ({ history }) => {
                 </label>
                 <label>
                     Password
-                    <input name="password" type="password" placeholder="Password" />
+                    <input name="password" type="password" placeholder="Password" /><br/>
                 </label>
                 <button type="submit">Log in</button>
             </form>
